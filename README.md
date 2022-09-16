@@ -42,3 +42,5 @@ Now you can use the new functionality added in the second contract, for example:
 => await box1.increment();
 
 Now you can do this method again and again and update the contract whenever you want to and the contract address will remain the same.
+You can also follow the documentation of this article:
+https://dev.to/yakult/tutorial-write-upgradeable-smart-contract-proxy-contract-with-openzeppelin-1916
