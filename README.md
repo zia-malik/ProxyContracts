@@ -1,15 +1,44 @@
-# Basic Sample Hardhat Project
+Initial commands:
+=> npm init
+=> npm install hardhat
+=> npx hardhat
+=> yarn
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+Then install these Modules:
+=> yarn add @nomiclabs/hardhat-ethers
+=> yarn add @openzeppelin/hardhat-upgrades
 
-Try running some of the following tasks:
+Run hardhat node and this shall not stop:
+=> npx hardhat node
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Open parallel terminal and run the script to deploy the smart contract:
+=> npx hardhat run --network localhost scripts/Box-script.ts
+
+Copy the contract address and comment it in the contrac file.
+open the hardhat console:
+=> hardhat console --network localhost
+
+Create const of the contract to use its functions:
+=> const Box = await ethers.getContractFactory("Box");
+=> const box = await Box.attach('//paste contract address here');
+
+Now you call the functions of the deployed smart contracts, for example:
+=> (await box.retrieve()).toString();
+
+Now you want to deploy the updated contract with some new functionalities.
+Write the script of the contract and add the address of the previous contract there.
+
+Then run the script of the second contract:
+=> npx hardhat run --network localhost scripts/Box1-script.ts
+
+open the hardhat console:
+=> hardhat console --network localhost
+
+Create const of the contract to use its functions:
+=> const Box1 = await ethers.getContractFactory("Box1");
+=> const box1 = await Box1.attach('//paste contract address here');
+
+Now you can use the new functionality added in the second contract, for example:
+=> await box1.increment();
+
+Now you can do this method again and again and update the contract whenever you want to and the contract address will remain the same.
